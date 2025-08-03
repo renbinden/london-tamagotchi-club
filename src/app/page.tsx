@@ -3,6 +3,7 @@ import { Carousel } from "@/components/Carousel";
 import { Blurb } from "@/components/Blurb";
 import { UpcomingEvents } from "@/components/UpcomingEvents";
 import { Typography } from "@mui/material";
+import { Highlights } from "@/components/Highlights";
 
 const Home: React.FC = () => {
   return (
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
           },
         ]}
       />
+      <Highlights />
       <Typography
         variant="h2"
         sx={{
