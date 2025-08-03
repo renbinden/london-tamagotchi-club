@@ -15,11 +15,15 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@js-joda/core": "^5.6.5",
+    "@js-joda/locale_en": "^4.15.1",
+    "@js-joda/timezone": "^2.22.0",
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
     "next": "15.4.5",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "react-swipeable": "^7.0.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
