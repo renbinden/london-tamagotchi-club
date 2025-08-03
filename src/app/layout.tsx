@@ -3,6 +3,8 @@ import React from "react";
 import { ThemeRegistry } from "@/lib/themeRegistry";
 import { Box, Container } from "@mui/material";
 import { Title } from "@/components/Title";
+import { Footer } from "@/components/Footer";
+import { TopBar } from "@/components/TopBar";
 
 export const metadata: Metadata = {
   title: "London Tamagotchi Meet",
@@ -28,8 +30,10 @@ export default function RootLayout({
               overflow: "auto",
             }}
           >
+            <TopBar />
             <Title />
             {children}
+            <Footer />
           </Box>
         </ThemeRegistry>
       </body>

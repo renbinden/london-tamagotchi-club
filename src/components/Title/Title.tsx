@@ -10,7 +10,7 @@ export const Title: React.FC = () => {
       }}
     >
       <Image src="/logo.png" alt="Logo" width={200} height={200} />
-      <Typography variant="h1">London Tamagotchi Meet</Typography>
+      <Typography variant="h1">London Tamagotchi Club</Typography>
     </Box>
   );
 };
