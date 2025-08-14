@@ -15,16 +15,48 @@ const Home: React.FC = () => {
       <Carousel
         images={[
           {
-            src: "/carousel/connect.jpg",
-            alt: "Outstretched hands holding many Tamagotchis connecting",
+            src: "/carousel/1.jpg",
+            alt: "A group of people in a circle holding Tamagotchis",
           },
           {
-            src: "/carousel/discuss.jpg",
-            alt: "Many Tamagotchi fans sitting on a picnic mat",
+            src: "/carousel/2.jpeg",
+            alt: "A London Tamagotchi Club membership card",
           },
           {
-            src: "/carousel/link.jpg",
-            alt: "Two tamagotchi fans linking Tamagotchis",
+            src: "/carousel/3.jpg",
+            alt: "Several people connecting Tamagotchi Paradise devices",
+          },
+          {
+            src: "/carousel/4.jpg",
+            alt: "A table with many different Tamagotchis",
+          },
+          {
+            src: "/carousel/5.jpg",
+            alt: "People showing off many different Tamagotchis",
+          },
+          {
+            src: "/carousel/6.jpg",
+            alt: "Someone wearing a Tamagotchi Club London T-shirt with a Tamagotchi around their neck",
+          },
+          {
+            src: "/carousel/7.jpg",
+            alt: "Two Tamagotchi keyrings",
+          },
+          {
+            src: "/carousel/8.jpg",
+            alt: "Two people smiling while wearing various pieces of Tamagotchi merchandise",
+          },
+          {
+            src: "/carousel/9.jpg",
+            alt: "A Tamagotchi Club London stamp card",
+          },
+          {
+            src: "/carousel/10.png",
+            alt: "Many people in a circle holding Tamagotchis",
+          },
+          {
+            src: "/carousel/11.jpg",
+            alt: "Various different Tamagotchi devices",
           },
         ]}
       />
