@@ -35,14 +35,21 @@ export const HeroUnit: React.FC = () => {
         }}
       >
         <Container maxWidth="lg">
+          <Box
+            sx={{
+              textAlign: "center",
+              pt: {
+                xs: 0,
+                md: "36px",
+              },
+            }}
+          >
+            <Image src="/logo.png" alt="Logo" width={200} height={200} />
+          </Box>
           <Typography
             variant="h1"
             sx={{
               textAlign: "center",
-              pt: {
-                xs: "160px",
-                md: "236px",
-              },
               fontSize: {
                 xs: "40px",
                 md: "64px",
