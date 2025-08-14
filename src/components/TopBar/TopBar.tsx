@@ -17,7 +17,6 @@ export const TopBar: React.FC = () => {
           xs: "none",
           md: "flex",
         },
-        mb: 8,
       }}
     >
       <Toolbar

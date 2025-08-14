@@ -4,10 +4,12 @@ import { Blurb } from "@/components/Blurb";
 import { UpcomingEvents } from "@/components/UpcomingEvents";
 import { Typography } from "@mui/material";
 import { Highlights } from "@/components/Highlights";
+import { HeroUnit } from "@/components/HeroUnit";
 
 const Home: React.FC = () => {
   return (
     <>
+      <HeroUnit />
       <Blurb
         header="Meet other Tamagotchi fans"
         text="Discuss, connect and create with like-minded people from across the UK"

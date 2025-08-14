@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import { ThemeRegistry } from "@/lib/themeRegistry";
-import { Box, Container } from "@mui/material";
-import { Title } from "@/components/Title";
+import { Box } from "@mui/material";
 import { Footer } from "@/components/Footer";
 import { TopBar } from "@/components/TopBar";
 
@@ -31,7 +30,6 @@ export default function RootLayout({
             }}
           >
             <TopBar />
-            <Title />
             {children}
             <Footer />
           </Box>
