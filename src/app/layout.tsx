@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import { TopBar } from "@/components/TopBar";
 
 export const metadata: Metadata = {
-  title: "London Tamagotchi Meet",
+  title: "London Tamagotchi Club",
   description: "Meet up with other Tamagotchi enthusiasts in London!",
 };
 

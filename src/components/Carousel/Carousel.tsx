@@ -52,7 +52,7 @@ export const Carousel: React.FC<EnvironmentsCarouselProps> = ({ images }) => {
     <Box
       sx={{
         mt: {
-          xs: "-20px",
+          xs: "20px",
           md: "40px",
         },
       }}
