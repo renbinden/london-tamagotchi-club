@@ -143,6 +143,28 @@ export const HeroUnit: React.FC = () => {
             >
               <FacebookIcon />
             </IconButton>
+            <IconButton
+              aria-label="tiktok"
+              href="https://www.tiktok.com/@ldntamagotchiclub"
+              size="large"
+              sx={{
+                width: 64,
+                height: 64,
+                backgroundColor: "#000000",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "rgba(1, 1, 1, 0.4)",
+                  backgroundBlendMode: "overlay",
+                },
+              }}
+            >
+              <Image
+                src="/logos/tiktok.svg"
+                alt="TikTok icon"
+                width={32}
+                height={32}
+              />
+            </IconButton>
           </Box>
         </Container>
       </Box>
