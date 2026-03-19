@@ -9,6 +9,12 @@ type Event = {
 
 export const events: Event[] = [
   {
+    description: "Spring Meetup",
+    date: ZonedDateTime.of(2026, 3, 21, 12, 0, 0, 0, ZoneId.UTC),
+    eventbrite: "https://www.eventbrite.com/e/london-tamagotchi-club-spring-meetup-tickets-1983617332840",
+    map: "https://maps.app.goo.gl/GmtUyVAabvRtvfko7",
+  },
+  {
     description: "Trinket & Tamagotchi Trade Christmas Meetup",
     date: ZonedDateTime.of(2025, 12, 14, 12, 0, 0, 0, ZoneId.UTC),
     eventbrite:
