@@ -5,6 +5,13 @@ const sql = postgres(process.env.DATABASE_URL!);
 
 const events = [
   {
+    description: "Spring Meetup",
+    date: new Date("2026-03-21T12:00:00Z"),
+    eventbrite:
+      "https://www.eventbrite.com/e/london-tamagotchi-club-spring-meetup-tickets-1983617332840",
+    map: "https://maps.app.goo.gl/GmtUyVAabvRtvfko7",
+  },
+  {
     description: "Trinket & Tamagotchi Trade Christmas Meetup",
     date: new Date("2025-12-14T12:00:00Z"),
     eventbrite:
