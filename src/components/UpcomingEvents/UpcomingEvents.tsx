@@ -1,6 +1,4 @@
 import {
-  Box,
-  Chip,
   Container,
   Divider,
   IconButton,
@@ -10,18 +8,22 @@ import {
   Paper,
 } from "@mui/material";
 import React from "react";
-import { DateTimeFormatter, ZonedDateTime, ZoneId } from "@js-joda/core";
+import { DateTimeFormatter, ZoneId } from "@js-joda/core";
 import "@js-joda/timezone";
-import { Locale } from "@js-joda/locale_en";
-import { events } from "@/lib/events";
+import "@js-joda/locale_en";
+import { Locale } from "@js-joda/locale";
+import { getEvents } from "@/lib/events";
 import MapIcon from "@mui/icons-material/Explore";
 import EventIcon from "@mui/icons-material/Event";
+import { PastChip } from "@/components/PastChip";
 
 const dateFormat = DateTimeFormatter.ofPattern(
   "EEE dd MMM yyyy HH:mm",
 ).withLocale(Locale.UK);
 
-export const UpcomingEvents: React.FC = () => {
+export const UpcomingEvents: React.FC = async () => {
+  const events = await getEvents();
+
   return (
     <Container
       maxWidth="md"
@@ -55,11 +57,7 @@ export const UpcomingEvents: React.FC = () => {
                           <EventIcon />
                         </IconButton>
                       )}
-                      {event.date.isBefore(ZonedDateTime.now()) && (
-                        <Box sx={{ ml: 2, display: "inline-block" }}>
-                          <Chip label="Past" color="primary" size="small" />
-                        </Box>
-                      )}
+                      <PastChip date={event.date.toString()} />
                     </>
                   }
                 >

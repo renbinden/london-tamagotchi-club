@@ -6,6 +6,8 @@ import { Typography } from "@mui/material";
 import { Highlights } from "@/components/Highlights";
 import { HeroUnit } from "@/components/HeroUnit";
 
+export const dynamic = "force-dynamic";
+
 const Home: React.FC = () => {
   return (
     <>

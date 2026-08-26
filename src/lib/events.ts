@@ -1,66 +1,26 @@
 import { ZonedDateTime, ZoneId } from "@js-joda/core";
+import { sql } from "@/lib/db";
 
-type Event = {
+export type Event = {
   description: string;
   date: ZonedDateTime;
   eventbrite?: string;
   map?: string;
 };
 
-export const events: Event[] = [
-  {
-    description: "Spring Meetup",
-    date: ZonedDateTime.of(2026, 3, 21, 12, 0, 0, 0, ZoneId.UTC),
-    eventbrite: "https://www.eventbrite.com/e/london-tamagotchi-club-spring-meetup-tickets-1983617332840",
-    map: "https://maps.app.goo.gl/GmtUyVAabvRtvfko7",
-  },
-  {
-    description: "Trinket & Tamagotchi Trade Christmas Meetup",
-    date: ZonedDateTime.of(2025, 12, 14, 12, 0, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.com/e/trinket-tamagotchi-trade-christmas-meetup-tickets-1967606841028",
-    map: "https://maps.app.goo.gl/qJumD2Z1XZmsRJd86",
-  },
-  {
-    description: "Halloween Meetup & Fancy Dress",
-    date: ZonedDateTime.of(2025, 10, 25, 11, 0, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.co.uk/e/tamagotchi-halloween-meetup-fancy-dress-tickets-1723611872509",
-    map: "https://maps.app.goo.gl/KgfnuJvf8r5og6wj6",
-  },
-  {
-    description: "August Pride Meetup",
-    date: ZonedDateTime.of(2025, 8, 2, 14, 0, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.co.uk/e/tamagotchi-club-august-pride-meetup-in-london-tickets-1465745035859",
-    map: "https://maps.app.goo.gl/ugDUWUp9M9GVPjJSA",
-  },
-  {
-    description: "1 Year Anniversary",
-    date: ZonedDateTime.of(2025, 6, 14, 12, 0, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.co.uk/e/london-tamagotchi-club-meetup-for-our-1-year-anniversary-tickets-1391396988849",
-    map: "https://maps.app.goo.gl/KgfnuJvf8r5og6wj6",
-  },
-  {
-    description: "Easter Meetup",
-    date: ZonedDateTime.of(2025, 4, 19, 12, 0, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.co.uk/e/london-tamagotchi-club-easter-meetup-registration-1313157632829",
-    map: "https://maps.app.goo.gl/HnsEi3vfVERpUhpw7",
-  },
-  {
-    description: "February Meetup",
-    date: ZonedDateTime.of(2025, 2, 8, 12, 0, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.co.uk/e/london-tamagotchi-club-february-meet-up-tickets-1143038883069",
-    map: "https://maps.app.goo.gl/KgfnuJvf8r5og6wj6",
-  },
-  {
-    description: "Tamagotchi's 28th Birthday",
-    date: ZonedDateTime.of(2024, 11, 24, 12, 30, 0, 0, ZoneId.UTC),
-    eventbrite:
-      "https://www.eventbrite.co.uk/e/london-tamagotchi-club-meet-up-for-tamagotchis-28th-birthday-tickets-1078072216019",
-    map: "https://maps.app.goo.gl/KgfnuJvf8r5og6wj6",
-  },
-];
+export async function getEvents(): Promise<Event[]> {
+  const rows = await sql`
+    SELECT description, date, eventbrite, map
+    FROM events
+    ORDER BY date DESC
+  `;
+
+  return rows.map((row) => ({
+    description: row.description,
+    date: ZonedDateTime.parse(
+      (row.date as Date).toISOString(),
+    ).withZoneSameInstant(ZoneId.UTC),
+    ...(row.eventbrite && { eventbrite: row.eventbrite }),
+    ...(row.map && { map: row.map }),
+  }));
+}
