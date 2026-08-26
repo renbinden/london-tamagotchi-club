@@ -15,7 +15,13 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { AdapterJsJoda } from "@/lib/AdapterJsJoda";
 import "@js-joda/locale_en-gb";
 import { Locale } from "@js-joda/locale";
-import { convert } from "@js-joda/core";
+import {
+  LocalDate,
+  LocalDateTime,
+  LocalTime,
+  ZoneId,
+  ZonedDateTime,
+} from "@js-joda/core";
 import type { PickerValidDate } from "@mui/x-date-pickers/models";
 import { addEvent } from "@/lib/actions";
 
@@ -27,7 +33,7 @@ const AdminPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [date, setDate] = useState<PickerValidDate | null>(null);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
@@ -35,7 +41,21 @@ const AdminPage: React.FC = () => {
     const form = e.currentTarget;
     const formData = new FormData(form);
     if (date) {
-      formData.set("date", convert(date).toDate().toISOString());
+      let localDateTime;
+      if (date instanceof ZonedDateTime) {
+        localDateTime = date;
+      } else if (date instanceof LocalDate) {
+        localDateTime = ZonedDateTime.of(
+          LocalDateTime.of(date, LocalTime.MIDNIGHT),
+          ZoneId.SYSTEM,
+        );
+      } else {
+        localDateTime = ZonedDateTime.of(date, ZoneId.SYSTEM);
+      }
+      formData.set(
+        "date",
+        localDateTime.withZoneSameInstant(ZoneId.UTC).toInstant().toString(),
+      );
     }
     const result = await addEvent(formData);
 
